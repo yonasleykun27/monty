@@ -8,26 +8,26 @@
  */
 void sub(stack_t **head, unsigned int counter)
 {
-        stack_t *aux;
-        int suspend, nodes;
+	stack_t *aux;
+	int suspend, nodes;
 
-        aux = *head;
-        for (nodes = 0; aux != NULL; nodes++)
-                aux = aux->next;
-        if (nodes < 2)
-        {
-                fprintf(stderr, "L%d: can't sub, stack too short\n", counter);
-                fclose(bus.file);
-                free(bus.content);
-                free_stack(*head);
-                exit(EXIT_FAILURE);
-        }
-        aux = *head;
-        suspend = aux->next->n - aux->n;
-        aux->next->n = suspend;
-        *head = aux->next;
-        (*head)->prev = NULL;
-        free(aux);
+	aux = *head;
+	for (nodes = 0; aux != NULL; nodes++)
+		aux = aux->next;
+	if (nodes < 2)
+	{
+		fprintf(stderr, "L%d: can't sub, stack too short\n", counter);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
+	}
+	aux = *head;
+	suspend = aux->next->n - aux->n;
+	aux->next->n = suspend;
+	*head = aux->next;
+	(*head)->prev = NULL;
+	free(aux);
 }
 
 /**
@@ -38,37 +38,37 @@ void sub(stack_t **head, unsigned int counter)
  */
 void div_op(stack_t **head, unsigned int counter)
 {
-        stack_t *h;
-        int len = 0, aux;
+	stack_t *h;
+	int len = 0, aux;
 
-        h = *head;
-        while (h)
-        {
-                h = h->next;
-                len++;
-        }
-        if (len < 2)
-        {
-                fprintf(stderr, "L%d: can't div, stack too short\n", counter);
-                fclose(bus.file);
-                free(bus.content);
-                free_stack(*head);
-                exit(EXIT_FAILURE);
-        }
-        h = *head;
-        if (h->n == 0)
-        {
-                fprintf(stderr, "L%d: division by zero\n", counter);
-                fclose(bus.file);
-                free(bus.content);
-                free_stack(*head);
-                exit(EXIT_FAILURE);
-        }
-        aux = h->next->n / h->n;
-        h->next->n = aux;
-        *head = h->next;
-        (*head)->prev = NULL;
-        free(h);
+	h = *head;
+	while (h)
+	{
+		h = h->next;
+		len++;
+	}
+	if (len < 2)
+	{
+		fprintf(stderr, "L%d: can't div, stack too short\n", counter);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
+	}
+	h = *head;
+	if (h->n == 0)
+	{
+		fprintf(stderr, "L%d: division by zero\n", counter);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
+	}
+	aux = h->next->n / h->n;
+	h->next->n = aux;
+	*head = h->next;
+	(*head)->prev = NULL;
+	free(h);
 }
 
 /**
@@ -79,29 +79,29 @@ void div_op(stack_t **head, unsigned int counter)
  */
 void mul(stack_t **head, unsigned int counter)
 {
-        stack_t *h;
-        int len = 0, aux;
+	stack_t *h;
+	int len = 0, aux;
 
-        h = *head;
-        while (h)
-        {
-                h = h->next;
-                len++;
-        }
-        if (len < 2)
-        {
-                fprintf(stderr, "L%d: can't mul, stack too short\n", counter);
-                fclose(bus.file);
-                free(bus.content);
-                free_stack(*head);
-                exit(EXIT_FAILURE);
-        }
-        h = *head;
-        aux = h->next->n * h->n;
-        h->next->n = aux;
-        *head = h->next;
-        (*head)->prev = NULL;
-        free(h);
+	h = *head;
+	while (h)
+	{
+		h = h->next;
+		len++;
+	}
+	if (len < 2)
+	{
+		fprintf(stderr, "L%d: can't mul, stack too short\n", counter);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
+	}
+	h = *head;
+	aux = h->next->n * h->n;
+	h->next->n = aux;
+	*head = h->next;
+	(*head)->prev = NULL;
+	free(h);
 }
 
 /**
@@ -113,37 +113,37 @@ void mul(stack_t **head, unsigned int counter)
  */
 void mod(stack_t **head, unsigned int counter)
 {
-        stack_t *h;
-        int len = 0, aux;
+	stack_t *h;
+	int len = 0, aux;
 
-        h = *head;
-        while (h)
-        {
-                h = h->next;
-                len++;
-        }
-        if (len < 2)
-        {
-                fprintf(stderr, "L%d: can't mod, stack too short\n", counter);
-                fclose(bus.file);
-                free(bus.content);
-                free_stack(*head);
-                exit(EXIT_FAILURE);
-        }
-        h = *head;
-        if (h->n == 0)
-        {
-                fprintf(stderr, "L%d: division by zero\n", counter);
-                fclose(bus.file);
-                free(bus.content);
-                free_stack(*head);
-                exit(EXIT_FAILURE);
-        }
-        aux = h->next->n % h->n;
-        h->next->n = aux;
-        *head = h->next;
-        (*head)->prev = NULL;
-        free(h);
+	h = *head;
+	while (h)
+	{
+		h = h->next;
+		len++;
+	}
+	if (len < 2)
+	{
+		fprintf(stderr, "L%d: can't mod, stack too short\n", counter);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
+	}
+	h = *head;
+	if (h->n == 0)
+	{
+		fprintf(stderr, "L%d: division by zero\n", counter);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
+	}
+	aux = h->next->n % h->n;
+	h->next->n = aux;
+	*head = h->next;
+	(*head)->prev = NULL;
+	free(h);
 }
 
 /**
@@ -154,26 +154,27 @@ void mod(stack_t **head, unsigned int counter)
  */
 void pchar(stack_t **head, unsigned int counter)
 {
-        stack_t *h;
+	stack_t *h;
 
-        h = *head;
-        if (!h)
-        {
-                fprintf(stderr, "L%d: can't pchar, stack empty\n", counter);
-                fclose(bus.file);
-                free(bus.content);
-                free_stack(*head);
-                exit(EXIT_FAILURE);
-        }
-        if (h->n > 127 || h->n < 0)
-        {
-                fprintf(stderr, "L%d: can't pchar, value out of range\n", counter);
-                fclose(bus.file);
-                free(bus.content);
-                free_stack(*head);
-                exit(EXIT_FAILURE);
-        }
-        printf("%c\n", h->n);
+	h = *head;
+	if (!h)
+	{
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", counter);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
+	}
+	if (h->n > 127 || h->n < 0)
+	{
+		fprintf(stderr, "L%d: can't pchar, value out of range\n",
+			counter);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
+	}
+	printf("%c\n", h->n);
 }
 
 /**
@@ -184,18 +185,18 @@ void pchar(stack_t **head, unsigned int counter)
  */
 void pstr(stack_t **head, unsigned int counter)
 {
-        stack_t *h;
-        (void)counter;
+	stack_t *h;
+	(void)counter;
 
-        h = *head;
-        while (h)
-        {
-                if (h->n > 127 || h->n <= 0)
-                {
-                        break;
-                }
-                printf("%c", h->n);
-                h = h->next;
-        }
-        printf("\n");
+	h = *head;
+	while (h)
+	{
+		if (h->n > 127 || h->n <= 0)
+		{
+			break;
+		}
+		printf("%c", h->n);
+		h = h->next;
+	}
+	printf("\n");
 }

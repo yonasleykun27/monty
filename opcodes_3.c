@@ -8,23 +8,23 @@
  */
 void rotl(stack_t **head, unsigned int counter)
 {
-        stack_t *tmp = *head, *aux;
-        (void)counter;
+	stack_t *tmp = *head, *aux;
+	(void)counter;
 
-        if (*head == NULL || (*head)->next == NULL)
-        {
-                return;
-        }
-        aux = (*head)->next;
-        aux->prev = NULL;
-        while (tmp->next != NULL)
-        {
-                tmp = tmp->next;
-        }
-        tmp->next = *head;
-        (*head)->next = NULL;
-        (*head)->prev = tmp;
-        *head = aux;
+	if (*head == NULL || (*head)->next == NULL)
+	{
+		return;
+	}
+	aux = (*head)->next;
+	aux->prev = NULL;
+	while (tmp->next != NULL)
+	{
+		tmp = tmp->next;
+	}
+	tmp->next = *head;
+	(*head)->next = NULL;
+	(*head)->prev = tmp;
+	*head = aux;
 }
 
 /**
@@ -35,23 +35,23 @@ void rotl(stack_t **head, unsigned int counter)
  */
 void rotr(stack_t **head, unsigned int counter)
 {
-        stack_t *copy;
-        (void)counter;
+	stack_t *copy;
+	(void)counter;
 
-        copy = *head;
-        if (*head == NULL || (*head)->next == NULL)
-        {
-                return;
-        }
-        while (copy->next)
-        {
-                copy = copy->next;
-        }
-        copy->next = *head;
-        copy->prev->next = NULL;
-        copy->prev = NULL;
-        (*head)->prev = copy;
-        *head = copy;
+	copy = *head;
+	if (*head == NULL || (*head)->next == NULL)
+	{
+		return;
+	}
+	while (copy->next)
+	{
+		copy = copy->next;
+	}
+	copy->next = *head;
+	copy->prev->next = NULL;
+	copy->prev = NULL;
+	(*head)->prev = copy;
+	*head = copy;
 }
 
 /**
@@ -62,9 +62,9 @@ void rotr(stack_t **head, unsigned int counter)
  */
 void set_stack(stack_t **head, unsigned int counter)
 {
-        (void)head;
-        (void)counter;
-        bus.lifi = 0;
+	(void)head;
+	(void)counter;
+	bus.lifi = 0;
 }
 
 /**
@@ -75,7 +75,7 @@ void set_stack(stack_t **head, unsigned int counter)
  */
 void set_queue(stack_t **head, unsigned int counter)
 {
-        (void)head;
-        (void)counter;
-        bus.lifi = 1;
+	(void)head;
+	(void)counter;
+	bus.lifi = 1;
 }

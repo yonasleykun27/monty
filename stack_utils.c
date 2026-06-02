@@ -6,14 +6,14 @@
  */
 void free_stack(stack_t *head)
 {
-        stack_t *temp;
+	stack_t *temp;
 
-        while (head)
-        {
-                temp = head->next;
-                free(head);
-                head = temp;
-        }
+	while (head)
+	{
+		temp = head->next;
+		free(head);
+		head = temp;
+	}
 }
 
 /**
@@ -24,21 +24,21 @@ void free_stack(stack_t *head)
  */
 void addnode(stack_t **head, int n)
 {
-        stack_t *new_node, *aux;
+	stack_t *new_node, *aux;
 
-        aux = *head;
-        new_node = malloc(sizeof(stack_t));
-        if (new_node == NULL)
-        {
-                fprintf(stderr, "Error: malloc failed\n");
-                exit(EXIT_FAILURE);
-        }
-        if (aux)
-                aux->prev = new_node;
-        new_node->n = n;
-        new_node->next = *head;
-        new_node->prev = NULL;
-        *head = new_node;
+	aux = *head;
+	new_node = malloc(sizeof(stack_t));
+	if (new_node == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
+	if (aux)
+		aux->prev = new_node;
+	new_node->n = n;
+	new_node->next = *head;
+	new_node->prev = NULL;
+	*head = new_node;
 }
 
 /**
@@ -49,29 +49,29 @@ void addnode(stack_t **head, int n)
  */
 void addqueue(stack_t **head, int n)
 {
-        stack_t *new_node, *aux;
+	stack_t *new_node, *aux;
 
-        aux = *head;
-        new_node = malloc(sizeof(stack_t));
-        if (new_node == NULL)
-        {
-                fprintf(stderr, "Error: malloc failed\n");
-                exit(EXIT_FAILURE);
-        }
-        new_node->n = n;
-        new_node->next = NULL;
-        if (aux)
-        {
-                while (aux->next)
-                {
-                        aux = aux->next;
-                }
-                aux->next = new_node;
-                new_node->prev = aux;
-        }
-        else
-        {
-                *head = new_node;
-                new_node->prev = NULL;
-        }
+	aux = *head;
+	new_node = malloc(sizeof(stack_t));
+	if (new_node == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
+	new_node->n = n;
+	new_node->next = NULL;
+	if (aux)
+	{
+		while (aux->next)
+		{
+			aux = aux->next;
+		}
+		aux->next = new_node;
+		new_node->prev = aux;
+	}
+	else
+	{
+		*head = new_node;
+		new_node->prev = NULL;
+	}
 }
