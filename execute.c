@@ -1,5 +1,26 @@
 #include "monty.h"
 
+static instruction_t opst[] = {
+	{"push", push},
+	{"pall", pall},
+	{"pint", pint},
+	{"pop", pop},
+	{"swap", swap},
+	{"add", add},
+	{"nop", nop},
+	{"sub", sub},
+	{"div", div_op},
+	{"mul", mul},
+	{"mod", mod},
+	{"pchar", pchar},
+	{"pstr", pstr},
+	{"rotl", rotl},
+	{"rotr", rotr},
+	{"stack", set_stack},
+	{"queue", set_queue},
+	{NULL, NULL}
+};
+
 /**
  * execute - executes the opcode
  * @content: line content
@@ -11,26 +32,6 @@
 int execute(char *content, stack_t **stack,
 	unsigned int line_number, FILE *file)
 {
-	instruction_t opst[] = {
-		{"push", push},
-		{"pall", pall},
-		{"pint", pint},
-		{"pop", pop},
-		{"swap", swap},
-		{"add", add},
-		{"nop", nop},
-		{"sub", sub},
-		{"div", div_op},
-		{"mul", mul},
-		{"mod", mod},
-		{"pchar", pchar},
-		{"pstr", pstr},
-		{"rotl", rotl},
-		{"rotr", rotr},
-		{"stack", set_stack},
-		{"queue", set_queue},
-		{NULL, NULL}
-	};
 	unsigned int i = 0;
 	char *op;
 
